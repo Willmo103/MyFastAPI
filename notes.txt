@@ -1,0 +1,40 @@
+
+these functions are called path operations in this language or routes in other languages.
+fast api will look for your path strings in sequential order and matches the first one.
+
+*****
+uvicorn main:app --reload
+
+Uvicorn is the thing that allows me to live update
+it is installed when the
+
+
+C.R.U.D(standard convention):
+
+Create -> POST -> @app.post("/posts) <-- the plural is the standard convention
+
+Read ---> GET --> @app.get("/posts/{id}")
+     \
+      \--> GET --> @app.get("/posts)
+
+Update --> PUT/PATCH  --> @app.put("/posts/{id}")
+
+Delete --> DELETE --> @app.delete("/posts/{id}")
+
+
+WHY WE NEED A SCHEMA:
+
+>> It's a pain to get all the Values from the body.
+
+>> the client can send any data they want.
+
+>> the data isn't getting validated.
+
+>> we ultimately want to force the client to send data in a schema that we expect.
+
+
+
+PYDANTIC moduel
+
+creates a model class with a built-in .dict method will be totally
+nice for building apps that use json as a persistence method.
