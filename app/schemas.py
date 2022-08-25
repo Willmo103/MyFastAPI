@@ -3,26 +3,6 @@ from pydantic import BaseModel, EmailStr
 from datetime import datetime
 
 
-# classes to model post schema
-class PostBase(BaseModel):
-    title: str
-    content: str
-    published: bool = True
-
-
-class PostCreate(PostBase):
-    pass
-
-
-class Post(PostBase):
-    id: int
-    created_at: datetime
-    owner_id: int
-
-    class Config:
-        orm_mode = True
-
-
 # classes to model user schemas
 class UserCreate(BaseModel):
     email: EmailStr
@@ -40,6 +20,27 @@ class UserOut(BaseModel):
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+
+
+# classes to model post schema
+class PostBase(BaseModel):
+    title: str
+    content: str
+    published: bool = True
+
+
+class PostCreate(PostBase):
+    pass
+
+
+class Post(PostBase):
+    id: int
+    created_at: datetime
+    owner_id: int
+    owner: UserOut
+
+    class Config:
+        orm_mode = True
 
 
 # schemas for token and data
